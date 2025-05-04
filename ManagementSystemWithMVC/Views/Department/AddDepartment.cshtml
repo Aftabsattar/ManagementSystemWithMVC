@@ -1,0 +1,32 @@
+﻿@model DepartmentViewModel;
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name">Enter Department Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+               <div class="mb-3">
+                   <label asp-for="Location"></label>
+                   <input asp-for="Location" class="form-control" />
+                   <span asp-validation-for="Name" class="text-danger"></span>
+               </div>
+            <button type="submit" asp-controller="Department" asp-action="AddDepartment" class="btn btn-primary">CreateDepartment</button>
+            <a asp-controller="Department" asp-action="GetAllDepartment" class="btn btn-secondary">Back</a>
+            </form>
+        </div>
+    </div>
+@section Scripts {
+    <script>
+        window.onload = function () {
+        @if (TempData["Success"] != null)
+        {
+            <text>
+                        alert("@TempData["Success"]");
+            </text>
+        }
+    };
+    </script>
+}

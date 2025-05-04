@@ -1,0 +1,24 @@
+﻿@model DepartmentViewModel;
+<div class="row">
+    <div class="col-md-6">
+        <form action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Id">ID</label>
+                <input type="text" asp-for="Id" class="form-control" readonly />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name">Enter Department Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Location"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <button type="submit" asp-controller="Department" asp-action="Edit" class="btn btn-primary">Update</button>
+            <a asp-controller="Department" asp-action="GetAllDepartment" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</div>

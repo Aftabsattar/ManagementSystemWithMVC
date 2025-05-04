@@ -1,0 +1,40 @@
+﻿@model EmployeeViewModel
+@{
+	ViewBag.Title = "Create Employee";
+}
+<h1>@ViewBag.Title</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Name">Enter Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email">Enter Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Phone">Enter PhoneNumber</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DepartmentId">Enter DepartmentID</label>
+                <input asp-for="DepartmentId" class="form-control" />
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="JoiningDate">Enter Joining Date</label>
+                <input asp-for="JoiningDate" class="form-control" />
+                <span asp-validation-for="JoiningDate" class="text-danger"></span>
+            </div>
+            <button type="submit" asp-controller="Employee" asp-action="Add" class="btn btn-primary">Create Employee</button>
+            <a asp-controller="Employee" asp-action="List" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</div>

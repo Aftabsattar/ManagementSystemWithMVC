@@ -1,0 +1,41 @@
+﻿@model List<EmployeeViewModel>
+@{
+	ViewBag.Title = "Employee List";
+}
+<h1>@ViewBag.Title</h1>
+<a asp-controller="Employee" asp-action="Create" class="btn btn-primary">Create</a>
+<form method="post">
+	<table class="table table-responsive table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone Number</th>
+				<th>DepartmentID</th>
+				<th>Joining Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model != null && Model.Count() > 0)
+			{
+				foreach(var employee in Model)
+				{
+					<tr>
+						<td>@employee.Id</td>
+						<td>@employee.Name</td>
+						<td>@employee.Email</td>
+						<td>@employee.Phone</td>
+						<td>@employee.DepartmentId</td>
+						<td>@employee.JoiningDate</td>
+						<td>
+							<div>
+								<a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
+								<a asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id" class="btn btn-outline-danger">Delete</a>
+							</div>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</form>
