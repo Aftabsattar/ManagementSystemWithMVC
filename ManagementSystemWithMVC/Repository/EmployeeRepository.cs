@@ -58,4 +58,11 @@ public class EmployeeRepository : IEmployeeRepository
         await _context.SaveChangesAsync();
         return true;
     }
+
+    public async Task<List<ShowEmployeeDTO>> GetByDepartmentId(int departmentId)
+    {
+        var employees = await _context.Employees.Where(e => e.DepartmentId == departmentId).ToListAsync();
+        if (employees.Count == 0) throw new NotFoundException("Employees Not Found");
+        return _mapper.Map<List<ShowEmployeeDTO>>(employees);
+    }
 }

@@ -1,0 +1,41 @@
+﻿@model ListDepartamentViewModel
+@{
+    // Ensure model is not null
+}
+<form asp-action="GetListByDepartmentId" method="post">
+    <label>Select Department:</label>
+    <select asp-for="Id" asp-items="Model.Departments" class="form-control">
+        <option value="">-- Select Department --</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Get Employees</button>
+</form>
+
+@if (Model?.Employees != null && Model.Employees.Count > 0)
+{
+    <h4 class="mt-4">Employees</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Joining Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var emp in Model.Employees)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Phone</td>
+                <td>@emp.JoiningDate.ToShortDateString()</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else if (Model != null && Model.Id > 0)
+{
+    <p class="mt-4">No employees found for this department.</p>
+}
